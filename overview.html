@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme overview — Mentorship Notebook</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="ov-boot" class="nb-boot">Loading the overview…</div>
+
+<div id="ov-app" class="nb-hidden">
+  <header class="nb-topbar">
+    <div class="nb-brand">
+      <span class="nb-brandname">Mentorship Notebook</span>
+    </div>
+    <span class="nb-spacer"></span>
+    <a class="nb-btn nb-btn-small" id="ov-signin" href="/" style="text-decoration:none;">Sign in</a>
+  </header>
+
+  <section class="ov-hero">
+    <h1 class="ov-title">Programme <span>overview</span></h1>
+    <p class="ov-lede">Where each fellow is, at a glance. Read-only — no personal details shown.</p>
+    <div class="ov-meta" id="ov-meta"></div>
+  </section>
+
+  <main class="nb-main" id="ov-main"></main>
+  <footer class="nb-foot">Public overview · read-only · no personal content shown · Built by <a href="https://dicksonotieno.com" target="_blank" rel="noopener noreferrer">Dickson Otieno</a></footer>
+</div>
+
+<script defer src="vendor/supabase.umd.js"></script>
+<script type="module" src="overview.js"></script>
+</body>
+</html>

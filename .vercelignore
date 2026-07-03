@@ -1,0 +1,14 @@
+# Keep internal docs and the DB schema OUT of the public deployment.
+# These are for the repo/maintainer only — never served to visitors.
+schema.sql
+migrations
+README.md
+SETUP.md
+CUSTOMIZATION.md
+TROUBLESHOOTING.md
+SECURITY.md
+CONTRIBUTING.md
+LICENSE
+.gitignore
+.vercel
+.claude

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Mentorship Notebook — built by Dickson Otieno · https://dicksonotieno.com -->
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentorship Notebook</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="boot" class="nb-boot">Loading the notebook…</div>
+
+<div id="login" class="nb-auth nb-hidden">
+  <div class="nb-authcard">
+    <h1>Sign in to give feedback to your mentor</h1>
+    <p class="nb-authsub">Enter your programme email and we'll send you a magic link — no password needed.</p>
+    <form id="login-form">
+      <label class="nb-label" for="login-email">Email address</label>
+      <input id="login-email" type="email" required placeholder="you@example.com" autocomplete="email">
+      <button type="submit" class="nb-btn nb-btn-primary" id="login-btn">Send me a sign-in link</button>
+    </form>
+    <p class="nb-authmsg" id="login-msg" role="status"></p>
+    <p class="nb-authsub" style="margin-top:14px;">Just an organiser? <a href="/overview">View the public overview</a> — no sign-in needed.</p>
+    <div id="setup-note" class="nb-setupnote nb-hidden">
+      <p><strong>Setup needed:</strong> Supabase keys are not configured yet (see <code>config.js</code> and the README).</p>
+      <button class="nb-btn" id="demo-btn">Explore in demo mode</button>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="nb-hidden">
+  <header class="nb-topbar">
+    <div class="nb-brand">
+      <span class="nb-brandname">Mentorship Notebook</span>
+      <span class="nb-brandsub" id="brand-sub"></span>
+    </div>
+    <nav class="nb-tabs" id="tabs" aria-label="Sections"></nav>
+    <div class="nb-userbox">
+      <span class="nb-userchip" id="user-chip"></span>
+      <button class="nb-btn nb-btn-small" id="signout-btn">Sign out</button>
+    </div>
+  </header>
+  <div id="demo-banner" class="nb-demobanner nb-hidden">Demo mode — sample data only, nothing is saved.</div>
+  <a id="sandbox-bar" class="nb-sandbar" href="https://example.com" target="_blank" rel="noopener noreferrer">
+    <span class="nb-sandbar-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 14h9"/></svg>
+    </span>
+    <span class="nb-sandbar-label"><strong>Practice space</strong><span class="nb-sandbar-desc"> — your hands-on workspace</span></span>
+    <span class="nb-sandbar-btn">Open<span aria-hidden="true"> ↗</span></span>
+  </a>
+  <main class="nb-main" id="main"></main>
+  <footer class="nb-foot">Private to the programme team · No trackers · <span id="foot-note"></span> · Built by <a href="https://dicksonotieno.com" target="_blank" rel="noopener noreferrer">Dickson Otieno</a></footer>
+</div>
+
+<!-- supabase-js vendored locally (pinned @2.108.2) — no third-party code at runtime -->
+<script defer src="vendor/supabase.umd.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

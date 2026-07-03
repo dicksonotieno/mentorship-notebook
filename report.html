@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentor report — Mentorship Notebook</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="rep-boot" class="nb-boot">Preparing your report…</div>
+
+<div id="rep-app" class="nb-hidden">
+  <div class="rep-bar">
+    <a href="/" class="nb-btn nb-btn-small" style="text-decoration:none;">← Back to app</a>
+    <span class="nb-spacer"></span>
+    <button class="nb-btn nb-btn-accent" id="rep-print">Print / Save as PDF</button>
+  </div>
+  <main class="rep-page" id="rep-page"></main>
+</div>
+
+<script defer src="vendor/supabase.umd.js"></script>
+<script type="module" src="report.js"></script>
+</body>
+</html>
