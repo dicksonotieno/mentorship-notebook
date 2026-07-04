@@ -163,6 +163,9 @@ matter as much as the RLS:
    only the `anon` key belongs there. (Currently correct.)
 5. **Region:** pick the Supabase region closest to your team, or the one that
    matches your data-residency / privacy obligations (e.g. an EU region for GDPR).
+6. **If you enable custom SMTP** (own-domain email via Resend or similar), the
+   provider's API key is a secret — it belongs only in Supabase's SMTP settings,
+   never in `config.js` or the repository.
 
 ## How to re-verify after deploy
 

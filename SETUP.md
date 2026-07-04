@@ -217,6 +217,7 @@ Hit a snag on any of these? See [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
 ## Going further
 
 - Make it yours (name, dates, tracks, fellows): [CUSTOMIZATION.md](CUSTOMIZATION.md)
+- Higher email limits & better deliverability (optional): [send auth email from your own domain](CUSTOMIZATION.md#sending-email-from-your-own-domain-optional) via a provider like Resend
 - Understand the security model in depth: [SECURITY.md](SECURITY.md)
 - End-of-programme export: Supabase → **Table Editor** → each table → **Export as
   CSV**; hand each fellow their record, then delete the project for a clean exit.

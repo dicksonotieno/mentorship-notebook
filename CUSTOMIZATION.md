@@ -184,6 +184,59 @@ tool). To change it:
 
 ---
 
+## Sending email from your own domain (optional)
+
+By default, Supabase sends every magic link and invite through its own shared,
+rate-limited mailer — fine for a small programme, but it caps at a handful of
+emails per hour and its messages can land in spam. You can hand all of that email
+to your own domain with a free provider like **Resend**. This is an **optional
+upgrade** — the app works without it.
+
+**Do you need it?** Probably not on day one. Reach for it when:
+
+- you're inviting more than a handful of fellows (or all at once),
+- invites landing in spam is unacceptable (e.g. fellows on strict work email),
+- you run the programme across multiple cohorts, or
+- you want a professional `from` address like `noreply@yourdomain.org`.
+
+**What you need:** a domain you own plus access to its DNS settings, and a free
+Resend account. About 20–30 minutes, plus some DNS-propagation waiting.
+
+1. **Resend → add your domain.** Sign up at [resend.com](https://resend.com) →
+   **Domains** → **Add Domain**. Prefer a sending subdomain (e.g.
+   `send.yourdomain.org`) so this never affects your main domain's email reputation.
+2. **Add the DNS records.** Resend shows a set of records (an SPF/MX record, a DKIM
+   `resend._domainkey` TXT record, and an optional DMARC record). Add them wherever
+   your domain's DNS is managed, then wait until Resend shows **Verified** (minutes
+   to a few hours).
+3. **Create an API key.** Resend → **API Keys** → create one. It doubles as your
+   SMTP password. Your SMTP settings are: host `smtp.resend.com`, port `465`,
+   username `resend`, password = the API key.
+4. **Point Supabase at it.** Supabase → **Project Settings → Authentication → SMTP
+   Settings** → enable **Custom SMTP** → sender `noreply@yourdomain.org` (must be on
+   the verified domain), a sender name, then the host / port / username / password
+   above. Save.
+5. **Raise the rate limit.** Supabase → **Authentication → Rate Limits** → increase
+   "emails per hour". The low default was tied to the built-in mailer; bump it now
+   or you'll still be throttled.
+6. **Test it.** Invite a throwaway address and confirm the email arrives from your
+   domain and lands in the inbox, not spam.
+
+> **Security:** the Resend API key is a secret. It lives only in Supabase's SMTP
+> settings — never in `config.js`, never in your repository. (Same rule as the
+> `service_role` key.)
+
+**If it misbehaves:**
+
+- *Domain won't verify* — DNS records take time to propagate; re-check each record
+  was pasted exactly (watch for trailing dots some hosts add automatically).
+- *Emails still land in spam* — add the DMARC record Resend suggests and send a few
+  real messages to warm up the domain.
+- *"Sender not allowed" / rejected* — the sender address must be on the exact domain
+  you verified (a subdomain counts).
+
+---
+
 ## Extending the database (add your own table)
 
 Building on top? Follow the same pattern the existing tables use so RLS keeps

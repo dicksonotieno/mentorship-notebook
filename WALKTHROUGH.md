@@ -425,7 +425,10 @@ from Supabase, not from the app.
 > delivers a handful of emails per hour. If you have more than two or three
 > fellows, space the invitations out (send the rest in an hour or tomorrow) —
 > otherwise the later invites simply never arrive and it *looks* like spam
-> filtering. Nothing is broken; wait, then invite the rest.
+> filtering. Nothing is broken; wait, then invite the rest. Running a bigger
+> cohort, or want invites to reliably reach inboxes? You can send email from your
+> own domain instead (optional) — see
+> [CUSTOMIZATION → Sending email from your own domain](CUSTOMIZATION.md#sending-email-from-your-own-domain-optional).
 
 > 💡 **Invitation links work once and expire after about a day.** If a fellow
 > says their link "does nothing" (some work email systems secretly pre-open

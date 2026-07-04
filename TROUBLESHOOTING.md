@@ -62,8 +62,10 @@ add a **Redirect URL** equal to your exact deployed domain (e.g.
 Also worth knowing: Supabase's built-in email sender is **rate-limited** (a few
 messages per hour). Inviting yourself plus several fellows in one sitting means
 the later invites may silently never send — it looks like random spam-filtering
-but is just the limit. Space invitations out, or plug in a free SMTP provider
-under **Authentication → SMTP**. And invitation links are **single-use and
+but is just the limit. Space invitations out — or, for higher limits and better
+inbox delivery, send auth email from your own domain (see
+[CUSTOMIZATION → Sending email from your own domain](CUSTOMIZATION.md#sending-email-from-your-own-domain-optional)).
+And invitation links are **single-use and
 expire after ~24 hours** — an expired or pre-opened link shows a clear
 "expired or already used" message on the sign-in screen; the person just
 requests a fresh link from the site with their email (no re-invite needed).
