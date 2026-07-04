@@ -88,9 +88,9 @@ The app needs two values from Supabase: your project URL and the public anon key
 
 1. Supabase → **Project Settings** (gear icon) → **API**.
 2. Copy the **Project URL** (looks like `https://abcdefgh.supabase.co`).
-3. Under **Project API keys**, copy the **`anon` `public`** key. (It's the one
-   labelled *public / anon* — **not** the `service_role` key, which must never
-   leave the dashboard.)
+3. Under **Project API keys**, copy the **`anon` `public`** key (labelled
+   **Publishable** on newer Supabase projects) — **not** the
+   `service_role`/Secret key, which must never leave the dashboard.
 4. Open [`config.js`](config.js) and paste both in:
 
 ```js
@@ -192,8 +192,9 @@ public overview shows.
 
 Tick these off — if all pass, you're live and safe:
 
-- [ ] **Mentor sign-in works.** The mentor email logs in and sees the fellow
-      switch at the top (fellows never see a switch).
+- [ ] **Mentor sign-in works.** The mentor email logs in and sees the Mentor
+      tab, plus the fellow switch once at least one fellow is invited (fellows
+      never see a switch).
 - [ ] **Fellow isolation works.** Sign in as a fellow (or invite a test address):
       they see only *their own* milestones, feedback and notebook — no switch, no
       other fellow's data.

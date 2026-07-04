@@ -5,7 +5,7 @@
 import { CONFIG } from './config.js';
 import { initTimeline, journeyStatus } from './timeline.js?v=4';
 
-const CONFIGURED = !CONFIG.supabaseUrl.includes('YOUR-') && !CONFIG.supabaseAnonKey.includes('YOUR-');
+const CONFIGURED = !/YOUR[-_]/.test(CONFIG.supabaseUrl) && !/YOUR[-_]/.test(CONFIG.supabaseAnonKey);
 const DEMO_PARAM = new URLSearchParams(location.search).has('demo');
 
 let sb = null;          // supabase client (null in demo mode)
@@ -420,6 +420,7 @@ const TABS = [
 ];
 
 function renderShell() {
+  if (CONFIG.programmeName) $('.nb-brandname').textContent = CONFIG.programmeName;
   $('#brand-sub').textContent = CONFIG.programmeSub;
   $('#foot-note').textContent = isMentor() ? 'Signed in as mentor' : 'Signed in as fellow';
   $('#user-chip').textContent = (S.profile ? (S.profile.display_name || S.profile.full_name) : '?') + (isMentor() ? ' · Mentor' : '');
@@ -1123,6 +1124,15 @@ async function boot() {
   if (session) { await enterApp(); }
   else {
     show('login');
+    // Supabase reports a dead magic link only in the URL hash — surface it,
+    // or the user just sees a blank sign-in screen and thinks nothing happened.
+    const hashErr = new URLSearchParams(location.hash.replace(/^#/, ''));
+    if (hashErr.get('error_code') === 'otp_expired' || hashErr.get('error') === 'access_denied') {
+      const msg = $('#login-msg');
+      msg.textContent = 'That sign-in link has expired or was already used. No problem — enter your email below and we\'ll send a fresh one.';
+      msg.classList.add('nb-err');
+      history.replaceState(null, '', location.pathname + location.search);
+    }
     $('#login-form').addEventListener('submit', async e => {
       e.preventDefault();
       const email = $('#login-email').value.trim();

@@ -3,6 +3,7 @@
 schema.sql
 migrations
 README.md
+WALKTHROUGH.md
 SETUP.md
 CUSTOMIZATION.md
 TROUBLESHOOTING.md

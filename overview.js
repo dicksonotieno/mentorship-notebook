@@ -5,7 +5,7 @@
 import { CONFIG } from './config.js';
 import { initTimeline, journeyStatus } from './timeline.js?v=4';
 
-const CONFIGURED = !CONFIG.supabaseUrl.includes('YOUR-') && !CONFIG.supabaseAnonKey.includes('YOUR-');
+const CONFIGURED = !/YOUR[-_]/.test(CONFIG.supabaseUrl) && !/YOUR[-_]/.test(CONFIG.supabaseAnonKey);
 const DEMO = new URLSearchParams(location.search).has('demo') || !CONFIGURED;
 
 const $ = s => document.querySelector(s);
@@ -162,6 +162,7 @@ async function boot() {
   }
   $('#ov-boot').classList.add('nb-hidden');
   $('#ov-app').classList.remove('nb-hidden');
+  if (CONFIG.programmeName) $('.nb-brandname').textContent = CONFIG.programmeName;
   const main = $('#ov-main');
 
   // hero

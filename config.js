@@ -15,7 +15,7 @@ export const CONFIG = {
   // From Supabase → Project Settings → API → Project API keys → "anon public"
   supabaseAnonKey: 'YOUR_ANON_PUBLIC_KEY',
 
-  // Shown in the header and reports. Make these your own.
+  // Shown in the app header, the public overview, and the printable report.
   programmeName: 'Mentorship Notebook',
   programmeSub: 'Your organisation · Season 20XX',
 

@@ -84,9 +84,13 @@ un-pauses it.)
 
 ## Get started
 
-1. **[SETUP.md](SETUP.md)** — the full walkthrough: create the database, deploy
-   the site, connect auth, invite your team. ~20 minutes, all free. Ends with a
-   "verify your install" checklist.
+0. **[WALKTHROUGH.md](WALKTHROUGH.md)** — **never used GitHub before? Start
+   here.** A zero-jargon, browser-only walkthrough that takes a first-timer
+   from creating a GitHub account to a live dashboard with fellows signed in.
+1. **[SETUP.md](SETUP.md)** — the condensed walkthrough for people comfortable
+   with GitHub/deploys: create the database, deploy the site, connect auth,
+   invite your team. ~20 minutes, all free. Ends with a "verify your install"
+   checklist.
 2. **[CUSTOMIZATION.md](CUSTOMIZATION.md)** — rename the programme, change the
    dates, rename the coloured tracks, add or remove fellows, tune the public
    overview, and extend the database.

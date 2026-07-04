@@ -4,7 +4,7 @@
  */
 import { CONFIG } from './config.js';
 
-const CONFIGURED = !CONFIG.supabaseUrl.includes('YOUR-') && !CONFIG.supabaseAnonKey.includes('YOUR-');
+const CONFIGURED = !/YOUR[-_]/.test(CONFIG.supabaseUrl) && !/YOUR[-_]/.test(CONFIG.supabaseAnonKey);
 const $ = s => document.querySelector(s);
 function el(tag, cls, text) {
   const e = document.createElement(tag);

@@ -5,6 +5,51 @@ dashboard settings, not code.
 
 ---
 
+### The site is stuck on "Loading the notebook…" forever
+
+**Cause:** a syntax slip in [`config.js`](config.js) — a deleted quote `'` or
+comma `,` from a recent edit. When that file can't be read, the app can't even
+start, so no error is shown.
+
+**Fix:** nothing is lost — GitHub keeps every version of every file. In your
+repository, open `config.js` → click **History** (top right) → open the last
+version from before the problem → copy its contents → edit the file and paste
+them back. Then redo your change carefully: every value sits between two
+quotes, every line inside the `{ }` ends with a comma. The same recipe rescues
+any other file you edit (like the `timeline` block).
+
+---
+
+### The app says "a sign-in link is on its way" — but nothing ever arrives, for anyone
+
+**Cause:** for privacy, the app shows the same calm message whether the send
+worked or not (so nobody can probe which emails are on the programme). The
+usual real causes:
+
+- A wrong or mangled value in `config.js` — re-copy the **Project URL** and the
+  **anon public** key (labelled **Publishable** on newer Supabase projects)
+  with no spaces or line breaks around them.
+- You've hit the free email rate limit (see the next-but-one entry).
+- The **Email** provider was switched off entirely in Supabase — re-enable it
+  under **Authentication → Sign In / Providers**; only "Allow new users to
+  sign up" should be off.
+
+---
+
+### I pasted the `service_role` (Secret) key into `config.js` by mistake
+
+**Cause:** the app may even appear to work — which is exactly the danger: that
+key bypasses all privacy rules and is now visible to anyone who can see your
+repository.
+
+**Fix:** two steps, in this order. (1) Replace it in `config.js` with the
+**anon public / Publishable** key. (2) In Supabase → **Project Settings → API**,
+**rotate/revoke** the service_role key so the leaked one goes dead. Don't skip
+step 2 — removing it from the file doesn't un-leak it from the repository's
+history.
+
+---
+
 ### The sign-in email never arrives, or its link opens `localhost`
 
 **Cause:** the auth redirect isn't set to your live site.
@@ -15,8 +60,13 @@ add a **Redirect URL** equal to your exact deployed domain (e.g.
 [SETUP step 6](SETUP.md#step-6--connect-auth-important).
 
 Also worth knowing: Supabase's built-in email sender is **rate-limited** (a few
-messages per hour). If you're testing repeatedly and mails stop, wait, or plug in
-a free SMTP provider under **Authentication → SMTP**.
+messages per hour). Inviting yourself plus several fellows in one sitting means
+the later invites may silently never send — it looks like random spam-filtering
+but is just the limit. Space invitations out, or plug in a free SMTP provider
+under **Authentication → SMTP**. And invitation links are **single-use and
+expire after ~24 hours** — an expired or pre-opened link shows a clear
+"expired or already used" message on the sign-in screen; the person just
+requests a fresh link from the site with their email (no re-invite needed).
 
 ---
 
